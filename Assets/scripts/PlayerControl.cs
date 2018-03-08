@@ -35,10 +35,10 @@ public class PlayerControl : MonoBehaviour {
 	const int state_attackLeft  = 11;
 
 	//player's direction
-	bool playerFaceUp;
-	bool playerFaceDown;
-	bool playerFaceLeft;
-	bool playerFaceRight;
+	public bool playerFaceUp;
+	public bool playerFaceDown;
+	public bool playerFaceLeft;
+	public bool playerFaceRight;
 
 	bool playerAttackRight;
 	bool playerAttackUp;
@@ -51,12 +51,12 @@ public class PlayerControl : MonoBehaviour {
 	bool stopMoving;
 	float timer;
 
-	enum playerDirection{
-		playerFaceUp,
-		playerFaceDown,
-		playerFaceLeft,
-		playerFaceRight
-	};
+//	enum playerDirection{
+//		playerFaceUp,
+//		playerFaceDown,
+//		playerFaceLeft,
+//		playerFaceRight
+//	};
 
 	enum playeranimation{
 		state_walkDown    = 0,
