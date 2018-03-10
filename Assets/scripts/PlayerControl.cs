@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour {
 	bool playerAttackLeft;
 
 	//player attack cool down properties
-	float coolDownTimer = .13f;
+	float coolDownTimer = .15f;
 	bool coolDownAttack;
 	bool stopMoving;
 	float timer;
@@ -90,7 +90,7 @@ public class PlayerControl : MonoBehaviour {
 	void playerMovement(){
 		
 		//player's movement
-		if(Input.GetKey(KeyCode.UpArrow) && !playerAttackUp){
+		if(Input.GetKey(KeyCode.UpArrow)){
 			playerFaceUp    = true;	
 			playerFaceRight = false;	
 			playerFaceLeft  = false;
@@ -103,7 +103,7 @@ public class PlayerControl : MonoBehaviour {
 			animation(state_idleUp);
 		}
 
-		if(Input.GetKey(KeyCode.DownArrow) && !playerAttackDown){
+		if(Input.GetKey(KeyCode.DownArrow)){
 			playerFaceDown  = true;
 			playerFaceUp    = false;	
 			playerFaceRight = false;	
@@ -116,7 +116,7 @@ public class PlayerControl : MonoBehaviour {
 			animation(state_idleDown);
 		}
 
-		if(Input.GetKey(KeyCode.LeftArrow) && !playerAttackLeft){			
+		if(Input.GetKey(KeyCode.LeftArrow)){			
 			playerFaceLeft  = true;
 			playerFaceRight = false;
 			playerFaceDown  = false;
@@ -129,7 +129,7 @@ public class PlayerControl : MonoBehaviour {
 			animation(state_idleLeft);
 		}
 
-		if(Input.GetKey(KeyCode.RightArrow) && !playerAttackRight){			
+		if(Input.GetKey(KeyCode.RightArrow)){			
 			playerFaceRight = true;	
 			playerFaceLeft  = false;
 			playerFaceDown  = false;
