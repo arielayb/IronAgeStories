@@ -90,7 +90,7 @@ public class PlayerControl : MonoBehaviour {
 	void playerMovement(){
 		
 		//player's movement
-		if(Input.GetKey(KeyCode.UpArrow)){
+		if(Input.GetKey(KeyCode.UpArrow) && !playerAttackUp){
 			playerFaceUp    = true;	
 			playerFaceRight = false;	
 			playerFaceLeft  = false;
@@ -103,7 +103,7 @@ public class PlayerControl : MonoBehaviour {
 			animation(state_idleUp);
 		}
 
-		if(Input.GetKey(KeyCode.DownArrow)){
+		if(Input.GetKey(KeyCode.DownArrow) && !playerAttackDown){
 			playerFaceDown  = true;
 			playerFaceUp    = false;	
 			playerFaceRight = false;	
@@ -116,7 +116,7 @@ public class PlayerControl : MonoBehaviour {
 			animation(state_idleDown);
 		}
 
-		if(Input.GetKey(KeyCode.LeftArrow)){			
+		if(Input.GetKey(KeyCode.LeftArrow) && !playerAttackLeft){			
 			playerFaceLeft  = true;
 			playerFaceRight = false;
 			playerFaceDown  = false;
@@ -129,7 +129,7 @@ public class PlayerControl : MonoBehaviour {
 			animation(state_idleLeft);
 		}
 
-		if(Input.GetKey(KeyCode.RightArrow)){			
+		if(Input.GetKey(KeyCode.RightArrow) && !playerAttackRight){			
 			playerFaceRight = true;	
 			playerFaceLeft  = false;
 			playerFaceDown  = false;
@@ -151,7 +151,6 @@ public class PlayerControl : MonoBehaviour {
 			stopMoving = true;
 			if(playerAttackUp && !coolDownAttack){
 				animate.Play("roguePlayer_attackUp");
-				//stopMoving = true;
 				playerAttackUp = false;
 				Invoke("attackCoolDown", coolDownTimer);
 				coolDownAttack = true;
@@ -163,7 +162,6 @@ public class PlayerControl : MonoBehaviour {
 			stopMoving = true;
 			if(playerAttackDown && !coolDownAttack){
 				animate.Play("roguePlayer_attackDown");
-				//stopMoving = true;
 				playerAttackDown = false;	
 				Invoke("attackCoolDown", coolDownTimer);
 				coolDownAttack = true;
@@ -175,7 +173,6 @@ public class PlayerControl : MonoBehaviour {
 			stopMoving = true;
 			if(playerAttackLeft && !coolDownAttack){
 				animate.Play("roguePlayer_attackLeft");
-				//stopMoving = true;
 				playerAttackLeft = false;
 				Invoke("attackCoolDown", coolDownTimer);
 				coolDownAttack = true;
@@ -187,7 +184,6 @@ public class PlayerControl : MonoBehaviour {
 			stopMoving = true;
 			if(playerAttackRight && !coolDownAttack){
 				animate.Play("roguePlayer_attackRight");
-				//stopMoving = true;
 				playerAttackRight = false;
 				Invoke("attackCoolDown", coolDownTimer);
 				coolDownAttack = true;
