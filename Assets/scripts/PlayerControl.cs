@@ -80,17 +80,19 @@ public class PlayerControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animate = GetComponent<Animator>();
-		playerAttackRight = false;
-		playerAttackUp    = false;
-		playerAttackDown  = false;
-		playerAttackLeft  = false;
+//		playerAttackRight = false;
+//		playerAttackUp    = false;
+//		playerAttackDown  = false;
+//		playerAttackLeft  = false;
 	
 	}
 
 	void playerMovement(){
 		
 		//player's movement
-		if(Input.GetKey(KeyCode.UpArrow)){
+		if(Input.GetKey(KeyCode.UpArrow) || 
+			(Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow))
+			|| (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftArrow))){
 			playerFaceUp    = true;	
 			playerFaceRight = false;	
 			playerFaceLeft  = false;
@@ -99,11 +101,15 @@ public class PlayerControl : MonoBehaviour {
 				player.transform.Translate(0, 1 * Time.deltaTime * playerSpeed, 0);
 				animation(state_walkUp);				
 			}
-		}else if(Input.GetKeyUp(KeyCode.UpArrow)){	
+		}else if(Input.GetKeyUp(KeyCode.UpArrow) || 
+			(Input.GetKeyUp(KeyCode.UpArrow) && Input.GetKeyUp(KeyCode.RightArrow))
+			|| (Input.GetKeyUp(KeyCode.UpArrow) && Input.GetKeyUp(KeyCode.LeftArrow))){	
 			animation(state_idleUp);
 		}
 
-		if(Input.GetKey(KeyCode.DownArrow)){
+		if(Input.GetKey(KeyCode.DownArrow) ||
+			(Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.RightArrow))
+			|| (Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.LeftArrow))){
 			playerFaceDown  = true;
 			playerFaceUp    = false;	
 			playerFaceRight = false;	
@@ -112,11 +118,15 @@ public class PlayerControl : MonoBehaviour {
 				player.transform.Translate(0, -1 * Time.deltaTime * playerSpeed, 0);
 				animation(state_walkDown);
 			}
-		}else if(Input.GetKeyUp(KeyCode.DownArrow)){	
+		}else if(Input.GetKeyUp(KeyCode.DownArrow) || 
+			(Input.GetKeyUp(KeyCode.DownArrow) && Input.GetKeyUp(KeyCode.RightArrow))
+			|| (Input.GetKeyUp(KeyCode.DownArrow) && Input.GetKeyUp(KeyCode.LeftArrow))){	
 			animation(state_idleDown);
 		}
 
-		if(Input.GetKey(KeyCode.LeftArrow)){			
+		if(Input.GetKey(KeyCode.LeftArrow) || 
+			(Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.UpArrow))
+			|| (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.DownArrow))){			
 			playerFaceLeft  = true;
 			playerFaceRight = false;
 			playerFaceDown  = false;
@@ -125,11 +135,15 @@ public class PlayerControl : MonoBehaviour {
 				player.transform.Translate(-1 * Time.deltaTime * playerSpeed, 0, 0);
 				animation(state_walkLeft);
 			}
-		}else if(Input.GetKeyUp(KeyCode.LeftArrow)){
+		}else if(Input.GetKeyUp(KeyCode.LeftArrow) || 
+			(Input.GetKeyUp(KeyCode.LeftArrow) && Input.GetKeyUp(KeyCode.UpArrow))
+			|| (Input.GetKeyUp(KeyCode.LeftArrow) && Input.GetKeyUp(KeyCode.DownArrow))){
 			animation(state_idleLeft);
 		}
 
-		if(Input.GetKey(KeyCode.RightArrow)){			
+		if(Input.GetKey(KeyCode.RightArrow) || 
+			(Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.UpArrow))
+			|| (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.DownArrow))){			
 			playerFaceRight = true;	
 			playerFaceLeft  = false;
 			playerFaceDown  = false;
@@ -138,8 +152,10 @@ public class PlayerControl : MonoBehaviour {
 				player.transform.Translate(1 * Time.deltaTime * playerSpeed, 0, 0);		
 				animation(state_walkRight);		
 			}
-		}else if(Input.GetKeyUp(KeyCode.RightArrow)){
-			animation(state_idleRight);
+		}else if(Input.GetKeyUp(KeyCode.RightArrow) || 
+			(Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKeyUp(KeyCode.UpArrow))
+			|| (Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKeyUp(KeyCode.DownArrow))){
+				animation(state_idleRight);
 		}
 	}
 
@@ -153,6 +169,7 @@ public class PlayerControl : MonoBehaviour {
 				animate.Play("roguePlayer_attackUp");
 				playerAttackUp = false;
 				Invoke("attackCoolDown", coolDownTimer);
+				animation(state_idleUp);
 				coolDownAttack = true;
 			}
 		}
@@ -164,6 +181,7 @@ public class PlayerControl : MonoBehaviour {
 				animate.Play("roguePlayer_attackDown");
 				playerAttackDown = false;	
 				Invoke("attackCoolDown", coolDownTimer);
+				animation(state_idleDown);
 				coolDownAttack = true;
 			}
 		}
@@ -175,6 +193,7 @@ public class PlayerControl : MonoBehaviour {
 				animate.Play("roguePlayer_attackLeft");
 				playerAttackLeft = false;
 				Invoke("attackCoolDown", coolDownTimer);
+				animation(state_idleLeft);
 				coolDownAttack = true;
 			}
 		}
@@ -186,6 +205,7 @@ public class PlayerControl : MonoBehaviour {
 				animate.Play("roguePlayer_attackRight");
 				playerAttackRight = false;
 				Invoke("attackCoolDown", coolDownTimer);
+				animation(state_idleRight);
 				coolDownAttack = true;
 			}
 		}	
@@ -249,11 +269,12 @@ public class PlayerControl : MonoBehaviour {
 	}
 		
 	void Update(){
-		playerControl();
+		//playerControl();
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
+		playerControl();
 		playerMovement();
 	}
 }
