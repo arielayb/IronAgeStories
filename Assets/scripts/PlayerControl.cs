@@ -46,10 +46,14 @@ public class PlayerControl : MonoBehaviour {
 	bool playerAttackLeft;
 
 	//player attack cool down properties
-	float coolDownTimer = .15f;
+	float coolDownTimer = .19f;
 	bool coolDownAttack;
 	bool stopMoving;
 	float timer;
+
+	//player sound effects
+	public AudioSource swordSlash;
+
 
 //	enum playerDirection{
 //		playerFaceUp,
@@ -80,10 +84,7 @@ public class PlayerControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animate = GetComponent<Animator>();
-//		playerAttackRight = false;
-//		playerAttackUp    = false;
-//		playerAttackDown  = false;
-//		playerAttackLeft  = false;
+		swordSlash = GetComponent<AudioSource>();
 	
 	}
 
@@ -162,7 +163,14 @@ public class PlayerControl : MonoBehaviour {
 	void playerControl(){
 		//player's control over the world using 
 		//specific keys/buttons in the game.
-		if(playerFaceUp && Input.GetKeyDown(KeyCode.Z)){
+
+		bool attackButton = Input.GetKeyDown(KeyCode.Z);
+
+		if(attackButton)
+			swordSlash.Play();
+			
+
+		if(playerFaceUp && attackButton){
 			playerAttackUp = true;
 			stopMoving = true;
 			if(playerAttackUp && !coolDownAttack){
@@ -174,7 +182,7 @@ public class PlayerControl : MonoBehaviour {
 			}
 		}
 	
-		if(playerFaceDown && Input.GetKeyDown(KeyCode.Z)){
+		if(playerFaceDown && attackButton){
 			playerAttackDown = true;
 			stopMoving = true;
 			if(playerAttackDown && !coolDownAttack){
@@ -186,7 +194,7 @@ public class PlayerControl : MonoBehaviour {
 			}
 		}
 	
-		if(playerFaceLeft && Input.GetKeyDown(KeyCode.Z)){
+		if(playerFaceLeft && attackButton){
 			playerAttackLeft = true;
 			stopMoving = true;
 			if(playerAttackLeft && !coolDownAttack){
@@ -198,7 +206,7 @@ public class PlayerControl : MonoBehaviour {
 			}
 		}
 
-		if(playerFaceRight && Input.GetKeyDown(KeyCode.Z)){
+		if(playerFaceRight && attackButton){
 			playerAttackRight = true;
 			stopMoving = true;
 			if(playerAttackRight && !coolDownAttack){
@@ -269,12 +277,12 @@ public class PlayerControl : MonoBehaviour {
 	}
 		
 	void Update(){
-		//playerControl();
+		playerControl();
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		playerControl();
+		//playerControl();
 		playerMovement();
 	}
 }
