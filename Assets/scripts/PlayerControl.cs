@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour {
 	bool playerAttackLeft;
 
 	//player attack cool down properties
-	float coolDownTimer = .19f;
+	float coolDownTimer = .25f;
 	bool coolDownAttack;
 	bool stopMoving;
 	float timer;
