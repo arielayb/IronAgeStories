@@ -64,6 +64,6 @@ C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\Temp\bin\Debug\UnityEditor.S
 C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\Temp\bin\Debug\UnityEditor.VR.xml
 C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml
-C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\obj\Debug\Assembly-CSharp.dll
 C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Ariel.Ariel1-PC\Documents\Iron Age Stories\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache

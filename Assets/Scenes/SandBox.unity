@@ -451,7 +451,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.02, y: 0.86}
+  m_Size: {x: 1.02, y: 0.51}
   m_EdgeRadius: 0
 --- !u!23 &329690628
 MeshRenderer:
@@ -467,7 +467,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b571795aa5db83b4ebde07b3e82d0bae, type: 2}
+  - {fileID: 2100000, guid: 889572441bac9164cb36454436b3633a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -501,8 +501,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 329690626}
   m_LocalRotation: {x: -0.3731282, y: -0, z: -0, w: 0.92777985}
-  m_LocalPosition: {x: 1.88, y: 0.41, z: 0.0078125}
-  m_LocalScale: {x: 2.7529342, y: 3.1244774, z: 1}
+  m_LocalPosition: {x: 7.119, y: 7.712, z: 0.25}
+  m_LocalScale: {x: 1.28629, y: 1.4974438, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -708,7 +708,7 @@ Prefab:
     - target: {fileID: 50681361063606404, guid: 270516bccec1c1e45bc75facb738772e,
         type: 2}
       propertyPath: m_Mass
-      value: 5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 50681361063606404, guid: 270516bccec1c1e45bc75facb738772e,
         type: 2}
@@ -739,6 +739,21 @@ Prefab:
         type: 2}
       propertyPath: m_Interpolate
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50681361063606404, guid: 270516bccec1c1e45bc75facb738772e,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50681361063606404, guid: 270516bccec1c1e45bc75facb738772e,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 50681361063606404, guid: 270516bccec1c1e45bc75facb738772e,
+        type: 2}
+      propertyPath: m_LinearDrag
+      value: 6.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 270516bccec1c1e45bc75facb738772e, type: 2}

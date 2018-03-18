@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour {
 	const int state_attackLeft  = 11;
 
 	//block animation states
-	const int state_blobkUp    = 12;
+	const int state_blockUp    = 12;
 	const int state_blockDown  = 13;
 	const int state_blockRight = 14;
 	const int state_blockLeft  = 15;
@@ -72,22 +72,22 @@ public class PlayerControl : MonoBehaviour {
 //		playerFaceRight
 //	};
 
-	enum playeranimation{
-		state_walkDown    = 0,
-		state_walkRight   = 1,
-		state_walkUp      = 2,
-		state_walkLeft    = 3,
-		state_idleUp      = 4,
-		state_idleDown    = 5,
-		state_idleRight   = 6,
-		state_idleLeft    = 7,
-		state_attackUp    = 10,
-		state_attackDown  = 8,
-		state_attackRight = 9,
-		state_attackLeft  = 11
-	};
-
-	playeranimation playerAnim;
+//	enum playeranimation{
+//		state_walkDown    = 0,
+//		state_walkRight   = 1,
+//		state_walkUp      = 2,
+//		state_walkLeft    = 3,
+//		state_idleUp      = 4,
+//		state_idleDown    = 5,
+//		state_idleRight   = 6,
+//		state_idleLeft    = 7,
+//		state_attackUp    = 10,
+//		state_attackDown  = 8,
+//		state_attackRight = 9,
+//		state_attackLeft  = 11
+//	};
+//
+//	playeranimation playerAnim;
 
 	private Vector3 movement;
 
@@ -175,12 +175,11 @@ public class PlayerControl : MonoBehaviour {
 		//specific keys/buttons in the game.
 
 		attackButton = Input.GetKeyDown(KeyCode.Z);
-		//blockButton  = Input.GetKey(KeyCode.X);
 
 		if(attackButton)
 			swordSlash.Play();
 			
-
+		//player's attack directions
 		if(playerFaceUp && attackButton){
 			playerAttackUp = true;
 			stopMoving = true;
@@ -192,16 +191,7 @@ public class PlayerControl : MonoBehaviour {
 				coolDownAttack = true;
 			}
 		}
-
-		if(playerFaceUp && Input.GetKey(KeyCode.X)){
-			stopMoving = true;
-			animate.Play("roguePlayer_blockUp");
-
-		}else if(playerFaceUp && Input.GetKeyUp(KeyCode.X)){
-			animation(state_idleUp);
-			stopMoving = false;
-		}
-	
+			
 		if(playerFaceDown && attackButton){
 			playerAttackDown = true;
 			stopMoving = true;
@@ -237,6 +227,25 @@ public class PlayerControl : MonoBehaviour {
 				coolDownAttack = true;
 			}
 		}	
+	
+		//player's block directions
+		if(playerFaceUp && Input.GetKey(KeyCode.X)){
+			stopMoving = true;
+			animate.Play("roguePlayer_blockUp");
+
+		}else if(playerFaceUp && Input.GetKeyUp(KeyCode.X)){
+			animation(state_idleUp);
+			stopMoving = false;
+		}
+	
+		if(playerFaceDown && Input.GetKey(KeyCode.X)){
+			stopMoving = true;
+			animate.Play("roguePlayer_blockDown");
+
+		}else if(playerFaceDown && Input.GetKeyUp(KeyCode.X)){
+			animation(state_idleDown);
+			stopMoving = false;
+		}
 	}
 
 	void animation(int states){
@@ -273,21 +282,21 @@ public class PlayerControl : MonoBehaviour {
 			animate.SetInteger("state", state_idleLeft);
 			break;
 
-			case 8:
-			animate.SetInteger("state", state_attackDown);
-			break;
-
-			case 9:
-			animate.SetInteger("state", state_attackRight);
-			break;
-
-			case 10:
-			animate.SetInteger("state", state_attackUp);
-			break;
-
-			case 11:
-			animate.SetInteger("state", state_attackLeft);
-			break;
+//			case 8:
+//			animate.SetInteger("state", state_attackDown);
+//			break;
+//
+//			case 9:
+//			animate.SetInteger("state", state_attackRight);
+//			break;
+//
+//			case 10:
+//			animate.SetInteger("state", state_attackUp);
+//			break;
+//
+//			case 11:
+//			animate.SetInteger("state", state_attackLeft);
+//			break;
 		}			
 	}
 		
