@@ -34,6 +34,12 @@ public class PlayerControl : MonoBehaviour {
 	const int state_attackRight = 9;
 	const int state_attackLeft  = 11;
 
+	//block animation states
+	const int state_blobkUp    = 12;
+	const int state_blockDown  = 13;
+	const int state_blockRight = 14;
+	const int state_blockLeft  = 15;
+
 	//player's direction
 	public bool playerFaceUp;
 	public bool playerFaceDown;
@@ -50,6 +56,10 @@ public class PlayerControl : MonoBehaviour {
 	bool coolDownAttack;
 	bool stopMoving;
 	float timer;
+
+	//player button controller
+	bool attackButton;
+	bool blockButton;
 
 	//player sound effects
 	public AudioSource swordSlash;
@@ -164,7 +174,8 @@ public class PlayerControl : MonoBehaviour {
 		//player's control over the world using 
 		//specific keys/buttons in the game.
 
-		bool attackButton = Input.GetKeyDown(KeyCode.Z);
+		attackButton = Input.GetKeyDown(KeyCode.Z);
+		//blockButton  = Input.GetKey(KeyCode.X);
 
 		if(attackButton)
 			swordSlash.Play();
@@ -180,6 +191,15 @@ public class PlayerControl : MonoBehaviour {
 				animation(state_idleUp);
 				coolDownAttack = true;
 			}
+		}
+
+		if(playerFaceUp && Input.GetKey(KeyCode.X)){
+			stopMoving = true;
+			animate.Play("roguePlayer_blockUp");
+
+		}else if(playerFaceUp && Input.GetKeyUp(KeyCode.X)){
+			animation(state_idleUp);
+			stopMoving = false;
 		}
 	
 		if(playerFaceDown && attackButton){
