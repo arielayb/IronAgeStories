@@ -52,10 +52,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\scripts\BoardManager.cs" />
+     <Compile Include="Assets\scripts\boulderTrap.cs" />
      <Compile Include="Assets\scripts\GameManager.cs" />
      <Compile Include="Assets\scripts\Loader.cs" />
      <Compile Include="Assets\scripts\PlayerControl.cs" />
      <Compile Include="Assets\scripts\TestBox.cs" />
+     <Compile Include="Assets\scripts\TrapMover.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

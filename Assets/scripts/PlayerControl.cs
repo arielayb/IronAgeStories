@@ -246,6 +246,24 @@ public class PlayerControl : MonoBehaviour {
 			animation(state_idleDown);
 			stopMoving = false;
 		}
+
+		if(playerFaceLeft && Input.GetKey(KeyCode.X)){
+			stopMoving = true;
+			animate.Play("roguePlayer_blockLeft");
+
+		}else if(playerFaceLeft && Input.GetKeyUp(KeyCode.X)){
+			animation(state_idleLeft);
+			stopMoving = false;
+		}
+
+		if(playerFaceRight && Input.GetKey(KeyCode.X)){
+			stopMoving = true;
+			animate.Play("roguePlayer_blockRight");
+
+		}else if(playerFaceRight && Input.GetKeyUp(KeyCode.X)){
+			animation(state_idleRight);
+			stopMoving = false;
+		}
 	}
 
 	void animation(int states){

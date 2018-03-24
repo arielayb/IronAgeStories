@@ -8,6 +8,11 @@ TagManager:
   - testBox
   - playerAttack
   - slashEffect
+  - playerBlock
+  - torchTrap
+  - shotSpawn
+  - dungeonTiles
+  - playerUI
   layers:
   - Default
   - TransparentFX
@@ -51,9 +56,12 @@ TagManager:
   - name: door
     uniqueID: 657412139
     locked: 0
+  - name: wall
+    uniqueID: 448243647
+    locked: 0
   - name: player
     uniqueID: 1950729015
     locked: 0
-  - name: wall
-    uniqueID: 448243647
+  - name: GUI
+    uniqueID: 583079203
     locked: 0
