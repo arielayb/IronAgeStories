@@ -89,7 +89,7 @@ public class PlayerControl : MonoBehaviour {
 //
 //	playeranimation playerAnim;
 
-	private Vector3 movement;
+	//private Vector3 movement;
 
 	// Use this for initialization
 	void Start () {
