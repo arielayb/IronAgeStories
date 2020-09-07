@@ -15,6 +15,7 @@ TagManager:
   - playerUI
   - healthBar
   - pullChain
+  - enemy
   layers:
   - Default
   - TransparentFX

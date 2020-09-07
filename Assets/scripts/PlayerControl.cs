@@ -93,7 +93,7 @@ public class PlayerControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		animate = GetComponent<Animator>();
+		animate = gameObject.GetComponent<Animator>();
 		swordSlash = GetComponent<AudioSource>();
 	
 	}
@@ -110,12 +110,15 @@ public class PlayerControl : MonoBehaviour {
 			playerFaceDown  = false;
 			if(!stopMoving){
 				player.transform.Translate(0, 1 * Time.deltaTime * playerSpeed, 0);
-				animation(state_walkUp);				
+                animation(state_walkUp);
+                //animate.Play("roguePlayer_walkUp");
 			}
 		}else if(Input.GetKeyUp(KeyCode.UpArrow) || 
 			(Input.GetKeyUp(KeyCode.UpArrow) && Input.GetKeyUp(KeyCode.RightArrow))
-			|| (Input.GetKeyUp(KeyCode.UpArrow) && Input.GetKeyUp(KeyCode.LeftArrow))){	
-			animation(state_idleUp);
+			|| (Input.GetKeyUp(KeyCode.UpArrow) && Input.GetKeyUp(KeyCode.LeftArrow))){
+                animation(state_idleUp);
+            //animate.Play("roguePlayer_idleUp");
+
 		}
 
 		if(Input.GetKey(KeyCode.DownArrow) ||
@@ -127,12 +130,14 @@ public class PlayerControl : MonoBehaviour {
 			playerFaceLeft  = false;
 			if(!stopMoving){
 				player.transform.Translate(0, -1 * Time.deltaTime * playerSpeed, 0);
-				animation(state_walkDown);
+                animation(state_walkDown);
+                //animate.Play("roguePlayer_WalkDown");
 			}
 		}else if(Input.GetKeyUp(KeyCode.DownArrow) || 
 			(Input.GetKeyUp(KeyCode.DownArrow) && Input.GetKeyUp(KeyCode.RightArrow))
-			|| (Input.GetKeyUp(KeyCode.DownArrow) && Input.GetKeyUp(KeyCode.LeftArrow))){	
-			animation(state_idleDown);
+			|| (Input.GetKeyUp(KeyCode.DownArrow) && Input.GetKeyUp(KeyCode.LeftArrow))){
+                animation(state_idleDown);
+            //animate.Play("roguePlayer_idleDown");
 		}
 
 		if(Input.GetKey(KeyCode.LeftArrow) || 
@@ -144,12 +149,15 @@ public class PlayerControl : MonoBehaviour {
 			playerFaceUp    = false;
 			if(!stopMoving){				
 				player.transform.Translate(-1 * Time.deltaTime * playerSpeed, 0, 0);
-				animation(state_walkLeft);
+                animation(state_walkLeft);
+                //animate.Play("roguePlayer_walkLeft");
+
 			}
 		}else if(Input.GetKeyUp(KeyCode.LeftArrow) || 
 			(Input.GetKeyUp(KeyCode.LeftArrow) && Input.GetKeyUp(KeyCode.UpArrow))
 			|| (Input.GetKeyUp(KeyCode.LeftArrow) && Input.GetKeyUp(KeyCode.DownArrow))){
-			animation(state_idleLeft);
+                animation(state_idleLeft);
+            //animate.Play("roquePlayer_idleLeft");
 		}
 
 		if(Input.GetKey(KeyCode.RightArrow) || 
@@ -160,13 +168,15 @@ public class PlayerControl : MonoBehaviour {
 			playerFaceDown  = false;
 			playerFaceUp    = false;
 			if(!stopMoving){				
-				player.transform.Translate(1 * Time.deltaTime * playerSpeed, 0, 0);		
-				animation(state_walkRight);		
+				player.transform.Translate(1 * Time.deltaTime * playerSpeed, 0, 0);
+                animation(state_walkRight);
+                //animate.Play("roguePlayer_walkRight");
 			}
 		}else if(Input.GetKeyUp(KeyCode.RightArrow) || 
 			(Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKeyUp(KeyCode.UpArrow))
 			|| (Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKeyUp(KeyCode.DownArrow))){
-				animation(state_idleRight);
+                animation(state_idleRight);
+                //animate.Play("roquePlayer_idleRight");
 		}
 	}
 
